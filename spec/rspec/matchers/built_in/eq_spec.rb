@@ -38,13 +38,13 @@ module RSpec
       it "provides message, expected and actual on #failure_message" do
         matcher = eq("1")
         matcher.matches?(1)
-        expect(matcher.failure_message).to eq "\nexpected: \"1\"\n     got: 1\n\n(compared using ==)\n"
+        expect(matcher.failure_message).to eq "expected: \"1\"\n     got: 1\n\n(compared using ==)\n"
       end
 
       it "provides message, expected and actual on #negative_failure_message" do
         matcher = eq(1)
         matcher.matches?(1)
-        expect(matcher.failure_message_when_negated).to eq "\nexpected: value != 1\n     got: 1\n\n(compared using ==)\n"
+        expect(matcher.failure_message_when_negated).to eq "expected: value != 1\n     got: 1\n\n(compared using ==)\n"
       end
 
       context "with Time objects" do

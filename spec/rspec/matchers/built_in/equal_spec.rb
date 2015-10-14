@@ -54,21 +54,21 @@ module RSpec
           expected, actual = true, "1"
           expect {
             expect(actual).to equal(expected)
-          }.to fail_with "\nexpected true\n     got #{inspect_object(actual)}\n"
+          }.to fail_with "expected true\n     got #{inspect_object(actual)}\n"
         end
 
         it "doesn't include extra object detail for `false`" do
           expected, actual = false, "1"
           expect {
             expect(actual).to equal(expected)
-          }.to fail_with "\nexpected false\n     got #{inspect_object(actual)}\n"
+          }.to fail_with "expected false\n     got #{inspect_object(actual)}\n"
         end
 
         it "doesn't include extra object detail for `nil`" do
           expected, actual = nil, "1"
           expect {
             expect(actual).to equal(expected)
-          }.to fail_with "\nexpected nil\n     got #{inspect_object(actual)}\n"
+          }.to fail_with "expected nil\n     got #{inspect_object(actual)}\n"
         end
       end
 
@@ -77,21 +77,21 @@ module RSpec
           expected, actual = true, false
           expect {
             expect(actual).to equal(expected)
-          }.to fail_with "\nexpected true\n     got false\n"
+          }.to fail_with "expected true\n     got false\n"
         end
 
         it "doesn't include extra object detail for `false`" do
           expected, actual = false, nil
           expect {
             expect(actual).to equal(expected)
-          }.to fail_with "\nexpected false\n     got nil\n"
+          }.to fail_with "expected false\n     got nil\n"
         end
 
         it "doesn't include extra object detail for `nil`" do
           expected, actual = nil, false
           expect {
             expect(actual).to equal(expected)
-          }.to fail_with "\nexpected nil\n     got false\n"
+          }.to fail_with "expected nil\n     got false\n"
         end
       end
 
@@ -100,7 +100,6 @@ module RSpec
         expect {
           expect(actual).to equal(expected)
         }.to fail_with <<-MESSAGE
-
 expected #{inspect_object(expected)}
      got #{inspect_object(actual)}
 
@@ -117,7 +116,6 @@ MESSAGE
         matcher = equal(expected)
         matcher.matches?(actual)
         expect(matcher.failure_message_when_negated).to eq <<-MESSAGE
-
 expected not #{inspect_object(expected)}
          got #{inspect_object(actual)}
 

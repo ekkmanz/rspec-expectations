@@ -19,7 +19,6 @@ module RSpec
         # @return [String]
         def failure_message_when_negated
           <<-MESSAGE
-
 expected not #{inspect_object(actual)}
          got #{inspect_object(expected)}
 
@@ -55,12 +54,11 @@ MESSAGE
         end
 
         def simple_failure_message
-          "\nexpected #{expected_formatted}\n     got #{actual_inspected}\n"
+          "expected #{expected_formatted}\n     got #{actual_inspected}\n"
         end
 
         def detailed_failure_message
           <<-MESSAGE
-
 expected #{inspect_object(expected)}
      got #{inspect_object(actual)}
 

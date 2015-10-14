@@ -347,9 +347,7 @@ module RSpec::Expectations
 
       context "when the failure messages starts and ends with line breaks (as the `eq` failure message does)" do
         before do
-          expect { expect(1).to eq(2) }.to fail_with(
-            a_string_starting_with("\n") & ending_with("\n")
-          )
+          expect { expect(1).to eq(2) }.to fail_with(a_string_ending_with("\n"))
         end
 
         it 'strips the excess line breaks so that it formats well' do

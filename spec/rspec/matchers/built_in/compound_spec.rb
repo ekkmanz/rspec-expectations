@@ -294,7 +294,6 @@ module RSpec::Matchers::BuiltIn
           expect {
             expect(3).to eq(4).and be >= 2
           }.to fail_with(dedent <<-EOS)
-            |
             |expected: 4
             |     got: 3
             |
@@ -309,7 +308,6 @@ module RSpec::Matchers::BuiltIn
           expect {
             expect(3).to be_kind_of(Integer).and eq(4)
           }.to fail_with(dedent <<-EOS)
-            |
             |expected: 4
             |     got: 3
             |
@@ -325,7 +323,6 @@ module RSpec::Matchers::BuiltIn
             expect {
               expect(3).to eq(4).and be >= 8
             }.to fail_with(dedent <<-EOS)
-              |
               |   expected: 4
               |        got: 3
               |
@@ -358,7 +355,6 @@ module RSpec::Matchers::BuiltIn
             expect {
               expect("foo").to eq(4).and end_with("z")
             }.to fail_with(dedent <<-EOS)
-              |
               |   expected: 4
               |        got: "foo"
               |
@@ -615,7 +611,6 @@ module RSpec::Matchers::BuiltIn
             expect {
               expect(3).to eq(4).or be >= 8
             }.to fail_with(dedent <<-EOS)
-              |
               |   expected: 4
               |        got: 3
               |
@@ -648,7 +643,6 @@ module RSpec::Matchers::BuiltIn
             expect {
               expect("foo").to eq(4).or end_with("z")
             }.to fail_with(dedent <<-EOS)
-              |
               |   expected: 4
               |        got: "foo"
               |
@@ -851,7 +845,6 @@ module RSpec::Matchers::BuiltIn
         expect {
           expect(3).to eq(1).and eq(2).and eq(3).and eq(4)
         }.to fail_with(dedent <<-EOS)
-          |
           |   expected: 1
           |        got: 3
           |
