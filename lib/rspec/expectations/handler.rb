@@ -24,11 +24,15 @@ module RSpec
         match = matcher.matches?(actual, &block)
         return match if match
 
-        message = message.call if message.respond_to?(:call)
-
-        message ||= matcher.respond_to?(:failure_message_for_should) ?
+        message ||= ""
+        message   = message.call if message.respond_to?(:call)
+        message   = message.strip + "\n\n" if message.present?
+        details   = matcher.respond_to?(:failure_message_for_should) ?
                     matcher.failure_message_for_should :
                     matcher.failure_message
+        details   = details.message if details.respond_to?(:message) 
+        message  += details.to_s.strip
+        message.strip!
 
         if matcher.respond_to?(:diffable?) && matcher.diffable?
           ::RSpec::Expectations.fail_with message, matcher.expected, matcher.actual
@@ -50,11 +54,15 @@ module RSpec
                 matcher.matches?(actual, &block)
         return match unless match
 
-        message = message.call if message.respond_to?(:call)
-
-        message ||= matcher.respond_to?(:failure_message_for_should_not) ?
+        message ||= ""
+        message   = message.call if message.respond_to?(:call)
+        message   = message.strip + "\n\n" if message.present?
+        details   = matcher.respond_to?(:failure_message_for_should_not) ?
                     matcher.failure_message_for_should_not :
                     matcher.negative_failure_message
+        details   = details.message if details.respond_to?(:message) 
+        message  += details.to_s
+        message.strip!
 
         if matcher.respond_to?(:diffable?) && matcher.diffable?
           ::RSpec::Expectations.fail_with message, matcher.expected, matcher.actual
